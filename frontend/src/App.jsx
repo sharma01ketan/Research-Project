@@ -1,6 +1,13 @@
 import React, { useState } from 'react';
 import Button from '@mui/material/Button';
 import { Typography, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper } from '@mui/material';
+import AppBar from '@mui/material/AppBar';
+import Box from '@mui/material/Box';
+import Toolbar from '@mui/material/Toolbar';
+import IconButton from '@mui/material/IconButton';
+import MenuIcon from '@mui/icons-material/Menu';
+
+
 
 const fetchData = async () => {
   try {
@@ -36,7 +43,7 @@ function FetchButton({ setData }) {
 
 function Data({ data }) {
   return (
-    <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "center" }}>
+    <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "center", flexDirection:"column"}}>
       {data.map(item => (
         <div key={item.enroll}>
           <div>{item.name}</div>
@@ -48,12 +55,36 @@ function Data({ data }) {
   );
 }
 
+ function ButtonAppBar({fetchedData, setFetchedData}) {
+  return (
+    <Box sx={{ flexGrow: 1 }}>
+      <AppBar position="static">
+        <Toolbar>
+          <IconButton
+            size="large"
+            edge="start"
+            color="inherit"
+            aria-label="menu"
+            sx={{ mr: 2 }}
+          >
+            <MenuIcon />
+          </IconButton>
+          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+            RECRUITER PANEL
+          </Typography>
+          <FetchButton setData={setFetchedData} />
+        </Toolbar>
+      </AppBar>
+    </Box>
+  );
+}
+
 export default function MainComponent() {
   const [fetchedData, setFetchedData] = useState([]);
 
   return (
     <>
-      <FetchButton setData={setFetchedData} />
+    <ButtonAppBar fetchedData={fetchedData} setFetchedData={setFetchedData}></ButtonAppBar>
       <Data data={fetchedData} />
     </>
   );
