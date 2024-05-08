@@ -8,6 +8,10 @@ import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import { makeStyles } from "@material-ui/core/styles";
 import { Grid } from "@material-ui/core";
+import { Unstable_NumberInput as NumberInput } from '@mui/base/Unstable_NumberInput';
+import Dialog from '@mui/material/Dialog';
+import DialogTitle from '@mui/material/DialogTitle';
+// import Popover from '@material-ui/core';
 
 
 
@@ -43,6 +47,24 @@ function FetchButton({ setData }) {
   );
 }
 
+function FilterButton({ setData }) {
+  const handleFetch = () => {
+    fetchData()
+      .then(data => setData(data.students))
+      .catch(error => console.error('Error fetching data:', error));
+  };
+
+  return (
+    <Button
+      variant="contained"
+      color="primary"
+      onClick={handleFetch}
+    >
+      FILTER DATA
+    </Button>
+  );
+}
+
  function ButtonAppBar({fetchedData, setFetchedData}) {
   return (
     <Box sx={{ flexGrow: 1 }}>
@@ -60,26 +82,13 @@ function FetchButton({ setData }) {
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             RECRUITER PANEL
           </Typography>
+          <FilterButton></FilterButton>
           <FetchButton setData={setFetchedData} />
         </Toolbar>
       </AppBar>
     </Box>
   );
 }
-
-// function Data({ data }) {
-//   return (
-//     <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "center", flexDirection:"column"}}>
-//       {data.map(item => (
-//         <div key={item.enroll}>
-//           <div>{item.name}</div>
-//           <div>{item.enroll}</div>
-//           <div>{item.score}</div>
-//         </div>
-//       ))}
-//     </div>
-//   );
-// }
 
 const useStyles = makeStyles((theme) => ({
   root: {
