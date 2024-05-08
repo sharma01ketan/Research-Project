@@ -6,6 +6,8 @@ import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
+import { makeStyles } from "@material-ui/core/styles";
+import { Grid } from "@material-ui/core";
 
 
 
@@ -41,20 +43,6 @@ function FetchButton({ setData }) {
   );
 }
 
-function Data({ data }) {
-  return (
-    <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "center", flexDirection:"column"}}>
-      {data.map(item => (
-        <div key={item.enroll}>
-          <div>{item.name}</div>
-          <div>{item.enroll}</div>
-          <div>{item.score}</div>
-        </div>
-      ))}
-    </div>
-  );
-}
-
  function ButtonAppBar({fetchedData, setFetchedData}) {
   return (
     <Box sx={{ flexGrow: 1 }}>
@@ -76,6 +64,55 @@ function Data({ data }) {
         </Toolbar>
       </AppBar>
     </Box>
+  );
+}
+
+// function Data({ data }) {
+//   return (
+//     <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "center", flexDirection:"column"}}>
+//       {data.map(item => (
+//         <div key={item.enroll}>
+//           <div>{item.name}</div>
+//           <div>{item.enroll}</div>
+//           <div>{item.score}</div>
+//         </div>
+//       ))}
+//     </div>
+//   );
+// }
+
+const useStyles = makeStyles((theme) => ({
+  root: {
+    flexGrow: 1,
+    padding: theme.spacing(2),
+  },
+  paper: {
+    padding: theme.spacing(2),
+    textAlign: "center",
+    color: theme.palette.text.secondary,
+    margin: theme.spacing(1),
+  },
+}));
+
+function Data({ data }) {
+  const classes = useStyles();
+
+  return (
+    <div className={classes.root}>
+    <Grid container spacing={2} justifyContent="center" direction="column" >
+      {data.map((item) => (
+        <Grid item xs={12}  key={item.enroll} justifyContent="center">
+          <Paper className={classes.paper}>
+            <div style={{ display: 'flex', alignItems: 'center' }}>
+              <Typography variant="h6" style={{ marginRight: '10px' }}>{item.name}</Typography>
+              <Typography style={{ marginRight: '10px' }}>{item.enroll}</Typography>
+              <Typography variant="subtitle1">{item.score}</Typography>
+            </div>
+          </Paper>
+        </Grid>
+      ))}
+    </Grid>
+  </div>
   );
 }
 
