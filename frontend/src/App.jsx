@@ -98,21 +98,28 @@ function Data({ data }) {
   const classes = useStyles();
 
   return (
-    <div className={classes.root}>
-    <Grid container spacing={2} justifyContent="center" direction="column" >
-      {data.map((item) => (
-        <Grid item xs={12}  key={item.enroll} justifyContent="center">
-          <Paper className={classes.paper}>
-            <div style={{ display: 'flex', alignItems: 'center' }}>
-              <Typography variant="h6" style={{ marginRight: '10px' }}>{item.name}</Typography>
-              <Typography style={{ marginRight: '10px' }}>{item.enroll}</Typography>
-              <Typography variant="subtitle1">{item.score}</Typography>
-            </div>
-          </Paper>
-        </Grid>
-      ))}
-    </Grid>
-  </div>
+    <TableContainer component={Paper}>
+      <Table className={classes.table} size="small" aria-label="a dense table">
+        <TableHead>
+          <TableRow>
+            <TableCell>Name</TableCell>
+            <TableCell align="right">Enroll</TableCell>
+            <TableCell align="right">Score</TableCell>
+          </TableRow>
+        </TableHead>
+        <TableBody>
+          {data.map((item) => (
+            <TableRow key={item.enroll}>
+              <TableCell component="th" scope="row">
+                {item.name}
+              </TableCell>
+              <TableCell align="right">{item.enroll}</TableCell>
+              <TableCell align="right">{item.score}</TableCell>
+            </TableRow>
+          ))}
+        </TableBody>
+      </Table>
+    </TableContainer>
   );
 }
 
