@@ -1,0 +1,54 @@
+{
+  "students": [
+      {
+          "name": "John Doe",
+          "enroll": "IT001",
+          "score": 490
+      },
+      {
+          "name": "Jane Smith",
+          "enroll": "IT002",
+          "score": 509
+      },
+      {
+          "name": "Alice Johnson",
+          "enroll": "IT003",
+          "score": 522
+      },
+      {
+          "name": "Bob Brown",
+          "enroll": "IT004",
+          "score": 494
+      },
+      {
+          "name": "Eva Wilson",
+          "enroll": "IT005",
+          "score": 499
+      },
+      {
+          "name": "Michael Lee",
+          "enroll": "IT006",
+          "score": 512
+      },
+      {
+          "name": "Sophia Garcia",
+          "enroll": "IT007",
+          "score": 499
+      },
+      {
+          "name": "Oliver Martinez",
+          "enroll": "IT008",
+          "score": 506
+      },
+      {
+          "name": "Isabella Taylor",
+          "enroll": "IT009",
+          "score": 502
+      },
+      {
+          "name": "Liam Anderson",
+          "enroll": "IT010",
+          "score": 512
+      }
+  ]
+}
