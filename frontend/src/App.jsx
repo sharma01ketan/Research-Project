@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Recruiter from "./Recruiter.jsx"
 import Admin from "./Admin.jsx"
+import Mock from './Mock.jsx';
 
 function App() {
 
@@ -11,6 +12,7 @@ function App() {
                 <Routes>
                 <Route path={"/recruiters"} element={<Recruiter />} />
                 <Route path={"/admin"} element={<Admin />} />
+                <Route path={"/mock"} element={<Mock />} />
                 </Routes>
             </Router>
         </div>
